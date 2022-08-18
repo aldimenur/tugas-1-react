@@ -11,7 +11,7 @@ function NavbarComponent() {
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0">
               <Nav.Link href="/home">Home</Nav.Link>
-              <Nav.Link href="/gallery">Albums</Nav.Link>
+              <Nav.Link href="/gallery">Gallery</Nav.Link>
               <Nav.Link href="/posts">Posts</Nav.Link>
             </Nav>
           </Navbar.Collapse>

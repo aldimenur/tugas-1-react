@@ -21,6 +21,10 @@ function Posts() {
       });
   }, [jumlahPost]);
 
+  useEffect(() => {
+    document.title = "Posts";
+  });
+
   function handleTambahPost() {
     setJumlahPost(jumlahPost + 1);
   }

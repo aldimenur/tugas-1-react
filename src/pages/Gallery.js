@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Stack } from "react-bootstrap";
 import GalleryLayout from "../components/layouts/Gallery.layout";
 
 function Gallery() {
+  useEffect(() => {
+    document.title = "Gallery";
+  });
+
   return (
     <React.Fragment>
       <Container>
