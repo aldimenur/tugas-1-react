@@ -49,11 +49,7 @@ function Posts() {
   };
 
   const handleClose = () => setShow(false);
-  const handleShow = () => {
-    setSelectedModal(posts);
-    setShow(true);
-    console.log(posts);
-  };
+
   const ModalClick = (props) => {
     return (
       <div>

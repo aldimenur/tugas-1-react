@@ -29,16 +29,30 @@ function GalleryLayout(props) {
 
   return (
     <React.Fragment>
-      <Albums limit={angka} />
+      <div className="w-50">
+        <Albums limit={angka} />
+      </div>
       <div className="mx-auto bg-danger px-3 rounded-5">
         <h2 className="text-center text-white">{angka}</h2>
       </div>
-      <Button onClick={handleTambah} disabled={stateUp}>
-        TAMBAH
-      </Button>
-      <Button onClick={handleKurang} disabled={stateDown}>
-        KURANG
-      </Button>
+      <div className="mx-auto">
+        <Button
+          onClick={handleTambah}
+          disabled={stateUp}
+          size="lg"
+          className="m-2"
+        >
+          TAMBAH
+        </Button>
+        <Button
+          onClick={handleKurang}
+          disabled={stateDown}
+          size="lg"
+          className="m-2"
+        >
+          KURANG
+        </Button>
+      </div>
     </React.Fragment>
   );
 }

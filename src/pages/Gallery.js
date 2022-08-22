@@ -10,8 +10,8 @@ function Gallery() {
   return (
     <React.Fragment>
       <Container>
-        <Stack gap={3}>
-          <h1 className="mx-auto"> GALLERY </h1>
+        <Stack gap={2} className="align-items-center my-4">
+          <h1> GALLERY </h1>
           <GalleryLayout />
         </Stack>
       </Container>
