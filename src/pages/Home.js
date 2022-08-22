@@ -5,7 +5,7 @@ import MenuHome from "../components/MenuHome";
 function Home() {
   useEffect(() => {
     document.title = "Home";
-  });
+  }, []);
 
   return (
     <React.Fragment>

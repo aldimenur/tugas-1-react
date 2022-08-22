@@ -5,7 +5,7 @@ import GalleryLayout from "../components/layouts/Gallery.layout";
 function Gallery() {
   useEffect(() => {
     document.title = "Gallery";
-  });
+  }, []);
 
   return (
     <React.Fragment>

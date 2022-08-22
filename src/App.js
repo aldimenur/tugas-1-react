@@ -1,23 +1,62 @@
 import "./App.css";
-import NavbarComponent from "./components/layouts/Navbar";
-import Gallery from "./pages/Gallery";
-import Posts from "./pages/Posts";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
+import React from "react";
+import { Nav, Navbar, Container } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+
+function NavbarComponent() {
+  return (
+    <React.Fragment>
+      <Navbar bg="dark" variant="dark" expand="lg">
+        <Container fluid>
+          <Navbar.Brand href="/home">Tugas React Cuy</Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav className="justify-content-center align-items-center">
+              <div>
+                <NavLink
+                  to="/home"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "btn btn-secondary active mx-1"
+                      : "btn btn-primary mx-1"
+                  }
+                >
+                  Home
+                </NavLink>
+                <NavLink
+                  to="/gallery"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "btn btn-secondary active mx-1"
+                      : "btn btn-primary mx-1"
+                  }
+                >
+                  Gallery
+                </NavLink>
+                <NavLink
+                  to="/posts"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "btn btn-secondary active mx-1"
+                      : "btn btn-primary mx-1"
+                  }
+                >
+                  Posts
+                </NavLink>
+              </div>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </React.Fragment>
+  );
+}
 
 function App() {
   return (
-    <>
+    <React.Fragment>
       <NavbarComponent />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" />
-          <Route path="/home" element={<Home />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/posts" element={<Posts />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    </React.Fragment>
   );
 }
 

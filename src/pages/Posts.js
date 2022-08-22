@@ -27,7 +27,7 @@ function Posts() {
 
   useEffect(() => {
     document.title = "Posts";
-  });
+  }, []);
 
   const handleTambahPost = () => {
     if (jumlahPost === 20) {
