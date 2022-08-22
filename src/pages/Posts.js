@@ -10,6 +10,7 @@ function Posts() {
   const [show, setShow] = useState(false);
   const [disabled, setDisabled] = useState("");
   const [disabledN, setDisabledN] = useState("");
+  const [selectedModal, setSelectedModal] = useState([]);
 
   useEffect(() => {
     axios({
@@ -48,14 +49,14 @@ function Posts() {
   };
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  const handleShow = () => {
+    setSelectedModal(posts);
+    setShow(true);
+    console.log(posts);
+  };
   const ModalClick = (props) => {
     return (
-      <div key={props.key}>
-        <Button variant="primary" onClick={handleShow}>
-          Read
-        </Button>
+      <div>
         <Modal show={show} onHide={handleClose} centered>
           <Modal.Header closeButton>
             <Modal.Title>{props.title}</Modal.Title>
@@ -97,13 +98,23 @@ function Posts() {
                     <Card.Body>
                       <Card.Title>{e.title}</Card.Title>
                       <Card.Text>{e.body}</Card.Text>
-                      <ModalClick key={index} body={e.body} title={e.title} />
+                      <Button
+                        variant="primary"
+                        onClick={() => {
+                          setSelectedModal(e);
+                          setShow(!show);
+                          console.log(e);
+                        }}
+                      >
+                        Read
+                      </Button>
                     </Card.Body>
                   </Card>
                 </Col>
               );
             })}
           </Row>
+          <ModalClick title={selectedModal.title} body={selectedModal.body} />
         </div>
       </Container>
     </React.Fragment>
