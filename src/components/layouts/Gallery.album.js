@@ -25,7 +25,7 @@ function Albums(props) {
             <Carousel.Item key={i}>
               <img className="d-block w-100" src={data.url} alt="First slide" />
               <Carousel.Caption>
-                <h3>{data.title}</h3>
+                <h3 className="gallery-title">{data.title}</h3>
                 <p>{data.description}</p>
               </Carousel.Caption>
             </Carousel.Item>

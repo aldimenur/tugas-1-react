@@ -29,7 +29,7 @@ function GalleryLayout(props) {
 
   return (
     <React.Fragment>
-      <div className="w-50">
+      <div className="w-setengah">
         <Albums limit={angka} />
       </div>
       <div className="mx-auto bg-danger px-3 rounded-5">
