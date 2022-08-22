@@ -1,0 +1,42 @@
+.container {
+  max-width: 720px !important;
+}
+
+.profile-pict {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-home {
+  max-width: auto;
+  margin: 4em 0;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 4em;
+}
+
+.button-container > button {
+  margin: 0.5em;
+}
+
+@media screen and (max-width: 900px) {
+  .menu-home {
+    margin: 1em 4em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1000px !important;
+  }
+}
+
+@media (max-width: 550px) {
+  .container-posts {
+    margin: 0 2px;
+  }
+}

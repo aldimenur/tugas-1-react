@@ -1,14 +1,21 @@
-import { Button, Stack } from "react-bootstrap";
+// eslint-disable-next-line no-unused-vars
+import { Button, Stack, Row, Col, Container } from "react-bootstrap";
 import React from "react";
 
 function MenuHome() {
   return (
     <React.Fragment>
-      <Stack gap={3}>
-        <Button href="/home">Home</Button>
-        <Button href="/posts">Posts</Button>
-        <Button href="/gallery">Gallery</Button>
-      </Stack>
+      <Row>
+        <Button href="/home" variant="primary" size="lg" className="m-2">
+          Home
+        </Button>
+        <Button href="/posts" variant="primary" size="lg" className="m-2">
+          Posts
+        </Button>
+        <Button href="/gallery" variant="primary" size="lg" className="m-2">
+          Gallery
+        </Button>
+      </Row>
     </React.Fragment>
   );
 }

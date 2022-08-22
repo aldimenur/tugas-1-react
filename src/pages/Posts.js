@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Stack, Container } from "react-bootstrap";
+import { Stack, Container, Row } from "react-bootstrap";
 import "./Posts.css";
 import axios from "axios";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Col, Modal } from "react-bootstrap";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
-  const [jumlahPost, setJumlahPost] = useState(1);
+  const [jumlahPost, setJumlahPost] = useState(4);
+  const [show, setShow] = useState(false);
+  const [disabled, setDisabled] = useState("");
+  const [disabledN, setDisabledN] = useState("");
 
   useEffect(() => {
     axios({
@@ -25,34 +28,83 @@ function Posts() {
     document.title = "Posts";
   });
 
-  function handleTambahPost() {
-    setJumlahPost(jumlahPost + 1);
-  }
-  function handleKurangPost() {
-    setJumlahPost(jumlahPost - 1);
-  }
+  const handleTambahPost = () => {
+    if (jumlahPost === 20) {
+      setJumlahPost(jumlahPost + 0);
+      setDisabled("disabled");
+    } else if (jumlahPost !== 20) {
+      setJumlahPost(jumlahPost + 1);
+      setDisabledN("");
+    }
+  };
+  const handleKurangPost = () => {
+    if (jumlahPost === 1) {
+      setJumlahPost(jumlahPost - 0);
+      setDisabledN("disabled");
+    } else if (jumlahPost !== 0) {
+      setJumlahPost(jumlahPost - 1);
+      setDisabled("");
+    }
+  };
 
-  console.log(posts);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const ModalClick = (props) => {
+    return (
+      <div key={props.key}>
+        <Button variant="primary" onClick={handleShow}>
+          Read
+        </Button>
+        <Modal show={show} onHide={handleClose} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>{props.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{props.body}</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  };
 
   return (
     <React.Fragment>
       <Container>
         <Stack gap={3}>
           <h1 className="mx-auto"> POSTS </h1>
-          <Button onClick={handleTambahPost}> TAMBAH </Button>
-          <Button onClick={handleKurangPost}> KURANG </Button>
+          <div className="button-container">
+            <Button onClick={handleTambahPost} className={`button ${disabled}`}>
+              TAMBAH
+            </Button>
+            <Button
+              onClick={handleKurangPost}
+              className={`button ${disabledN}`}
+            >
+              KURANG
+            </Button>
+          </div>
         </Stack>
-        {posts.map((post, index) => {
-          return (
-            <Card style={{ width: "width=100px" }} key={index} className="my-4">
-              <Card.Body>
-                <Card.Title>{post.title}</Card.Title>
-                <Card.Text>{post.body}</Card.Text>
-                <Button variant="primary">{}</Button>
-              </Card.Body>
-            </Card>
-          );
-        })}
+        <div className="container-posts">
+          <Row xl={4} md={2} xs={1}>
+            {posts.map((e, index) => {
+              return (
+                <Col key={index}>
+                  <Card className="my-4">
+                    <Card.Body>
+                      <Card.Title>{e.title}</Card.Title>
+                      <Card.Text>{e.body}</Card.Text>
+                      <ModalClick key={index} body={e.body} title={e.title} />
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
+        </div>
       </Container>
     </React.Fragment>
   );
