@@ -2,7 +2,7 @@
   max-width: 720px !important;
 }
 
-.w-setengah {
+.w-half {
   width: 50%;
 }
 
@@ -60,7 +60,7 @@
     animation-duration: 200ms;
   }
 
-  .w-setengah {
+  .w-half {
     width: 100%;
   }
 }
